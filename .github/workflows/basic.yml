@@ -45,7 +45,7 @@ jobs:
           
       - run: go run hello.go
       
-  echoecho:
+  process:
       runs-on: ubuntu-latest
       steps:
       # Runs a single command using the runners shell
