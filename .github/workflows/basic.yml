@@ -14,12 +14,20 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+# workflow level
+env:
+  PIPE: cicd
+
+# job level
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
   checkout:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+
+    env:
+      STAGE: dev
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -44,7 +52,13 @@ jobs:
           # Target architecture for Go to use. Examples: x86, x64. Will use system architecture by default.
           #architecture: # optional
           
-      - run: go run hello.go
+      - run: |
+          go run hello.go
+          echo $GITHUB_TOKEN 
+          echo $STAGE 
+          echo $PIPE 
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
   process:
       runs-on: ubuntu-latest #self-hosted
