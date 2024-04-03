@@ -17,7 +17,7 @@ on:
 defaults:
   run:
     shell: bash
-    working-directory: workdir
+    #working-directory: workdir
 
 # workflow level
 env:
@@ -34,7 +34,7 @@ jobs:
     defaults:
       run:
         shell: sh
-        working-directory: test
+        #working-directory: test
 
     env:
       STAGE: dev
