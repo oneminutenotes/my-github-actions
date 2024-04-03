@@ -47,7 +47,7 @@ jobs:
       - run: go run hello.go
       
   process:
-      runs-on: self-hosted
+      runs-on: ubuntu-latest #self-hosted
       steps:
       # Runs a single command using the runners shell
       - name: Run a one-line script
