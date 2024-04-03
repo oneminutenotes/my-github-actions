@@ -77,3 +77,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+      - run: echo ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+  report-os:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check-os
+        if: runner.os != 'Windows'
+        run: echo "The runner's operating system is $RUNNER_OS."
