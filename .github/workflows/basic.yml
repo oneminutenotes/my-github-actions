@@ -113,4 +113,13 @@ jobs:
     steps:
       - name: Get Stage
         run: echo "The build is ${{ needs.setup.outputs.build-stage }}"
+
+  report-stage-cleaner:
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - name: Get Stage
+        env: 
+          BUILD_STAGE: ${{ needs.setup.outputs.build-stage }}
+        run: echo "The build is $BUILD_STAGE"
       
