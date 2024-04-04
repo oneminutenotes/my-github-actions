@@ -72,6 +72,7 @@ jobs:
         with:
           name: hello-go
           path: ./bin/macos-silicon-arm64
+          retention-days: 1
           #path: ./bin
 
       - run: |
