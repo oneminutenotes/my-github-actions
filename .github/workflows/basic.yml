@@ -7,9 +7,9 @@ run-name: Pipeline run by @${{ github.actor }}
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -43,7 +43,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
-      
+
       - name: Setup Go environment
         uses: actions/setup-go@v5.0.0
         with:
@@ -63,25 +63,27 @@ jobs:
           #architecture: # optional
 
       - name: Build go
-        run: env GOOS=darwin GOARCH=amd64 go build hello.go
+        run: |
+          chmod +x build.sh
+          ./build.sh
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v4.3.1
         with:
           name: hello-go
-          path: ./hello
-            
+          path: ./bin
+
       - run: |
           go run hello.go
           echo $GITHUB_TOKEN 
           echo $STAGE 
-          echo $PIPE 
+          echo $PIPE
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+
   process:
-      runs-on: ubuntu-latest #self-hosted
-      steps:
+    runs-on: ubuntu-latest #self-hosted
+    steps:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
@@ -132,11 +134,10 @@ jobs:
     needs: setup
     steps:
       - name: Get Stage
-        env: 
+        env:
           BUILD_STAGE: ${{ needs.setup.outputs.build-stage }}
         run: echo "The build is $BUILD_STAGE"
       #- name: Get Artifact
-       # env: 
-        #  ARTIFACT_TAG: ${{ needs.setup.outputs.artifact-tag }}
-        #run: echo "The build is $ARTIFACT_TAG"
-      
+      # env:
+      #  ARTIFACT_TAG: ${{ needs.setup.outputs.artifact-tag }}
+      #run: echo "The build is $ARTIFACT_TAG"
