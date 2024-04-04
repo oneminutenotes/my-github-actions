@@ -71,7 +71,8 @@ jobs:
         uses: actions/upload-artifact@v4.3.1
         with:
           name: hello-go
-          path: ./bin
+          path: ./bin/macos-silicon-arm64
+          #path: ./bin
 
       - run: |
           go run hello.go
