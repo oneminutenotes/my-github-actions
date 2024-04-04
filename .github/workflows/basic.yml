@@ -63,7 +63,7 @@ jobs:
           #architecture: # optional
 
       - name: Build go
-        run: go build hello.go
+        run: env GOOS=darwin GOARCH=amd64 go build hello.go
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v4.3.1
