@@ -71,9 +71,9 @@ jobs:
         uses: actions/upload-artifact@v4.3.1
         with:
           name: hello-go
-          path: ./bin/macos-silicon-arm64
+          path: ./bin
           retention-days: 1
-          #path: ./bin
+          #path: ./bin/macos-silicon-arm64
 
       - run: |
           go run hello.go
@@ -82,6 +82,20 @@ jobs:
           echo $PIPE
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  test-run:
+    runs-on: ubuntu-latest
+    needs: checkout
+    steps:
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v4.1.4
+        with:
+          name: hello-go
+      - shell: bash
+        run: |
+          chmod +x ./bin/linux-amd64
+          ./bin/linux-amd64
+
 
   process:
     runs-on: ubuntu-latest #self-hosted
