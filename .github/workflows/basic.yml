@@ -95,3 +95,12 @@ jobs:
       - name: check-os
         if: runner.os != 'Windows'
         run: echo "The runner's operating system is $RUNNER_OS."
+
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set debug
+        id: set-debug-stage
+        run: echo "BUILD_STAGE=debug" >> $GITHUB_OUTPUT
+      - name: Get stage
+        run: echo "The build stage is ${{ steps.set-debug-stage.outputs.BUILD_STAGE }}"
