@@ -61,7 +61,16 @@ jobs:
           #cache-dependency-path: # optional
           # Target architecture for Go to use. Examples: x86, x64. Will use system architecture by default.
           #architecture: # optional
-          
+
+      - name: Build go
+        run: go build hello.go
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.3.1
+        with:
+          name: hello-go
+          path: ./hello
+            
       - run: |
           go run hello.go
           echo $GITHUB_TOKEN 
