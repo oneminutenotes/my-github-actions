@@ -91,11 +91,11 @@ jobs:
         uses: actions/download-artifact@v4.1.4
         with:
           name: appbuild
+          path: ./bin
       - shell: bash
         run: |
-          ls -al
-          chmod +x appbuild/linux-amd64
-          ./appbuild/linux-amd64
+          chmod +x ./bin/linux-amd64
+          ./bin/linux-amd64
 
 
   process:
