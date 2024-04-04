@@ -100,12 +100,16 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       build-stage: ${{ steps.set-debug-stage.outputs.BUILD_STAGE }}
+      artifact-tag: ${{ steps.changelog.outputs.version }}
     steps:
       - name: Set debug
         id: set-debug-stage
         run: echo "BUILD_STAGE=debug" >> $GITHUB_OUTPUT
       - name: Get stage
         run: echo "The build stage is ${{ steps.set-debug-stage.outputs.BUILD_STAGE }}"
+      - name: Conventional Changelog Action
+        id: changelog
+        uses: TriPSs/conventional-changelog-action@v3.14.0
 
   report-stage:
     runs-on: ubuntu-latest
@@ -122,4 +126,8 @@ jobs:
         env: 
           BUILD_STAGE: ${{ needs.setup.outputs.build-stage }}
         run: echo "The build is $BUILD_STAGE"
+      - name: Get Artifact
+        env: 
+          ARTIFACT_TAG: ${{ needs.setup.outputs.artifact-tag }}
+        run: echo "The build is $ARTIFACT_TAG"
       
