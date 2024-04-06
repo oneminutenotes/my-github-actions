@@ -1,0 +1,13 @@
+# Example CODEOWNERS file with syntax info
+
+# Each line consists of a file pattern with owner(s)
+
+# More specific lines further down in file will override earlier
+
+* @global-default-owner # Global default owner
+
+*.go @github-userid # Owner for .go files unless overridden later
+
+# tester email is used to identify GitHub user
+# corresponding user owns any files in /test/results tree
+# /test/results/ tester@mycompany.com
