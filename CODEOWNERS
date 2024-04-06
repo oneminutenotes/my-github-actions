@@ -4,9 +4,11 @@
 
 # More specific lines further down in file will override earlier
 
-* @global-default-owner # Global default owner
+# * @global-default-owner # Global default owner
+* @surajkelhe
 
-*.go @github-userid # Owner for .go files unless overridden later
+# *.go @github-userid # Owner for .go files unless overridden later
+*.go @surajkelhe
 
 # tester email is used to identify GitHub user
 # corresponding user owns any files in /test/results tree
