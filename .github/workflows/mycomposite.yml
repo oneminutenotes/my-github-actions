@@ -2,7 +2,10 @@ name: Composite Action
 
 on:
   workflow_dispatch:
-
+    inputs:
+      myValues:
+        description: "Arguments"
+        required: true
 jobs:
   count-args:
     runs-on: ubuntu-latest
