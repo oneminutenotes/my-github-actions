@@ -1,0 +1,13 @@
+name: Composite Action
+
+on:
+  workflow_dispatch:
+
+jobs:
+  count-args:
+    runs-on: ubuntu-latest
+    steps:
+      - id: report-count
+        uses: surajkelhe/my-github-actions@main
+        with:
+          arguments-to-count: ${{ github.event.inputs.myValues }}
