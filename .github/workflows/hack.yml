@@ -1,0 +1,13 @@
+name: Hack
+on:
+  push:
+    branches: [ "main" ]
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          DATA_VALUE: ${{ github.event.head_commit.message }}
+        run: echo $DATA_VALUE
+      # avoid inline script for script injection attack
+      #- run: echo ${{ github.event.head_commit.message }}
