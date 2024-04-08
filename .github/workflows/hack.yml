@@ -1,6 +1,7 @@
 name: Hack
 on:
   workflow_dispatch:
+  # workflow_call:
   # push:
   #   branches: [ "main" ]
 jobs:
@@ -12,3 +13,6 @@ jobs:
         run: echo $DATA_VALUE
       # avoid inline script for script injection attack
       #- run: echo ${{ github.event.head_commit.message }}
+
+  # invoke-workflow-in-this-repo:
+  # uses: ./.github/workflows/basic.yml # workflow_call
