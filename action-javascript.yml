@@ -1,0 +1,13 @@
+name: "Argument Counter"
+description: "Count # of arguments passed in"
+inputs:
+  arguments-to-count: # input id
+  description: "arguments to count"
+  required: true
+  default: ""
+outputs:
+  argcount:
+    description: "Count of arguments passed in"
+runs:
+  using: "node16"
+  main: "index.js"
