@@ -1,0 +1,11 @@
+name: "Test Action"
+description: "Prints hello world"
+author: "suraj"
+runs:
+  using: "composite"
+  steps:
+    - id: test run
+      run: |
+        chmod +x ${{ github.action_path }}/test-script.sh
+        ${{ github.action_path }}/test-script.sh
+      shell: bash

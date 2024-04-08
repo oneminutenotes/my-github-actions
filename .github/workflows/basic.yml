@@ -44,6 +44,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
+      - name: run-test
+        uses: ./github/actions/test-action
+
       - name: Setup Go environment
         uses: actions/setup-go@v5.0.0
         with:
@@ -96,7 +99,6 @@ jobs:
         run: |
           chmod +x ./bin/linux-amd64
           ./bin/linux-amd64
-
 
   process:
     runs-on: ubuntu-latest #self-hosted
