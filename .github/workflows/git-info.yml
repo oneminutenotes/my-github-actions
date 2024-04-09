@@ -1,0 +1,6 @@
+name: Get Info
+on:
+  push:
+jobs:
+  info:
+    uses: oneminutenotes/common/.github/workflows/repo-info.yml@main
